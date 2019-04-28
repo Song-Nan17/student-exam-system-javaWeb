@@ -9,6 +9,7 @@ public class User {
     private String id;
     private String name;
     private String password;
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id")
     private Role role;
