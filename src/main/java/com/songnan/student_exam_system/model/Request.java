@@ -14,7 +14,7 @@ public class Request {
     private String api;
     private String httpMethod;
 
-    @OneToMany(mappedBy = "request")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "request")
     @JsonManagedReference
     private Set<HttpParam> params;
 
