@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class StudentController {
@@ -17,14 +18,14 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @GetMapping("/students")
-    Iterable<Student> getAllStudentsBasicInfo() {
+    Iterable<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-//    @GetMapping("/students/{id}")
-//    String getStudentBasicInfoById(@PathVariable("id") Integer id) {
-//        return studentRepository.findStudentBasicInfoById(id).toString();
-//    }
+    @GetMapping("/students/{id}")
+    Optional<Student> getStudentBasicInfoById(@PathVariable("id") Integer id) {
+        return studentRepository.findById(id);
+    }
 
 //    @GetMapping("students/{id}/scores")
 //    List<Score> getScoreByStudentId(@PathVariable("id") Integer id) {
