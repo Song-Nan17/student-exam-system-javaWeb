@@ -55,7 +55,7 @@ public class Score {
     @Override
     public String toString() {
         return "科目：" + this.subject.getName() +
-                ", 学生：" + this.student.getName() +
+//                ", 学生：" + this.student.getName() +
                 ", 分数：" + this.score;
     }
 }

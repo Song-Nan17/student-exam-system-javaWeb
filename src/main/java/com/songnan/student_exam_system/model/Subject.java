@@ -17,9 +17,10 @@ public class Subject {
 //    @JsonManagedReference
 //    private List<Score> scores;
 
-//    @OneToOne(mappedBy = "subject", cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
-//    @JsonBackReference
-//    private Teacher teacher;
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
+    @JsonBackReference
+    private Teacher teacher;
 
 //    @ManyToMany
 //    @JoinTable(name = "student_subject", joinColumns = @JoinColumn(name = "subject_id"),

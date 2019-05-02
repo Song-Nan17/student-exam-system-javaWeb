@@ -13,10 +13,10 @@ public class Teacher {
     private Integer age;
     private String sex;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JsonManagedReference
-    @JoinColumn(name = "subject_id", referencedColumnName = "id")
-    private Subject subject;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    @JoinColumn(name = "subject_id", referencedColumnName = "id")
+//    private Subject subject;
 
     public Integer getId() {
         return this.id;
@@ -50,11 +50,11 @@ public class Teacher {
         this.sex = sex;
     }
 
-    public Subject getSubject() {
-        return this.subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+//    public Subject getSubject() {
+//        return this.subject;
+//    }
+//
+//    public void setSubject(Subject subject) {
+//        this.subject = subject;
+//    }
 }
