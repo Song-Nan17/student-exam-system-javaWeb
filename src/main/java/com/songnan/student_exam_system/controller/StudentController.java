@@ -27,13 +27,11 @@ public class StudentController {
         return studentRepository.findById(id);
     }
 
-//    @GetMapping("students/{id}/scores")
-//    List<Score> getScoreByStudentId(@PathVariable("id") Integer id) {
-//        return studentRepository.findById(id).get().getScores();
-//    }
-
     @PostMapping("students/update")
-    Student updateStudent(@RequestParam("id") Integer id,@RequestParam("name") String name,@RequestParam("age") Integer age,@RequestParam("sex") String sex) {
+    Student updateStudent(@RequestParam("id") Integer id,
+                          @RequestParam("name") String name,
+                          @RequestParam("age") Integer age,
+                          @RequestParam("sex") String sex) {
         Student student = new Student();
         student.setId(id);
         student.setName(name);
