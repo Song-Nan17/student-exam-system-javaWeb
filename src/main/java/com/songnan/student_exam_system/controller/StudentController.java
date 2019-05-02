@@ -23,7 +23,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    Optional<Student> getStudentBasicInfoById(@PathVariable("id") Integer id) {
+    Optional<Student> getStudentById(@PathVariable("id") Integer id) {
         return studentRepository.findById(id);
     }
 

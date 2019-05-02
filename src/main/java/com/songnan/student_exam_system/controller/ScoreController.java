@@ -20,9 +20,9 @@ public class ScoreController {
         return scoreRepository.findAll();
     }
 
-    @GetMapping("/scores/{id]")
-    List<Score> getScoresByStudentId(@PathVariable("id") Integer id) {
-        return scoreRepository.findByStudent_Id(id);
+    @GetMapping("/students/{studentId}/scores")
+    List<Score> getScoresByStudentId(@PathVariable("studentId") Integer studentId) {
+        return scoreRepository.findByStudent_Id(studentId);
     }
 
     @GetMapping("/scores/update")

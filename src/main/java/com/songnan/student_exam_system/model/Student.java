@@ -24,9 +24,9 @@ public class Student {
 //    @JsonIgnore
 //    private List<Score> scores;
 
-    @ManyToMany(mappedBy = "students")
-    @JsonBackReference
-    private List<Subject> subjects;
+//    @ManyToMany(mappedBy = "students")
+//    @JsonBackReference
+//    private List<Subject> subjects;
 
     public Student() {
     }
@@ -78,13 +78,13 @@ public class Student {
 //        this.scores = scores;
 //    }
 
-    public List<Subject> getSubjects() {
-        return this.subjects;
-    }
-
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
-    }
+//    public List<Subject> getSubjects() {
+//        return this.subjects;
+//    }
+//
+//    public void setSubjects(List<Subject> subjects) {
+//        this.subjects = subjects;
+//    }
 
     @Override
     public String toString() {
