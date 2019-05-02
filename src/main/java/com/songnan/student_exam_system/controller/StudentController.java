@@ -5,10 +5,7 @@ import com.songnan.student_exam_system.dao.StudentRepository;
 import com.songnan.student_exam_system.model.Score;
 import com.songnan.student_exam_system.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,17 +17,24 @@ public class StudentController {
     private StudentRepository studentRepository;
 
     @GetMapping("/students")
-    List<Student> getAllStudentsBasicInfo() {
-        return studentRepository.findAllStudentsBasicInfo();
+    Iterable<Student> getAllStudentsBasicInfo() {
+        return studentRepository.findAll();
     }
 
-    @GetMapping("/students/{id}")
-    String getStudentBasicInfoById(@PathVariable("id") Integer id) {
-        return studentRepository.findStudentBasicInfoById(id).toString();
-    }
+//    @GetMapping("/students/{id}")
+//    String getStudentBasicInfoById(@PathVariable("id") Integer id) {
+//        return studentRepository.findStudentBasicInfoById(id).toString();
+//    }
 
-    @GetMapping("students/{id}/scores")
-    List<Score> getScoreByStudentId(@PathVariable("id") Integer id) {
-        return studentRepository.findById(id).get().getScores();
-    }
+//    @GetMapping("students/{id}/scores")
+//    List<Score> getScoreByStudentId(@PathVariable("id") Integer id) {
+//        return studentRepository.findById(id).get().getScores();
+//    }
+
+//    @RequestMapping(value = "students/update",method = RequestMethod.POST,headers = "Content-Type:application/json")
+//    Student updateStudent(Student student) {
+//        Student oldStudent = studentRepository.findById(student.getId()).get();
+//        student.setScores(oldStudent.getScores());
+//        return studentRepository.save(student);
+//    }
 }

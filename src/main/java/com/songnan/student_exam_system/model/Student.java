@@ -10,19 +10,19 @@ import java.util.List;
 @Entity
 @Table(name = "student")
 //@NamedQuery(name = "Student.findAllStudentsBasicInfo", query = "select new com.songnan.student_exam_system.model.Student(s.id, s.name, s.age, s.sex) from Student s")
-
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
     private Integer age;
     private String sex;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
-    @JsonManagedReference
-    @JsonIgnore
-    private List<Score> scores;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student")
+//    @JsonManagedReference
+//    @JsonIgnore
+//    private List<Score> scores;
 
     @ManyToMany(mappedBy = "students")
     @JsonBackReference
@@ -70,13 +70,13 @@ public class Student {
         this.sex = sex;
     }
 
-    public List<Score> getScores() {
-        return this.scores;
-    }
-
-    public void setScores(List<Score> scores) {
-        this.scores = scores;
-    }
+//    public List<Score> getScores() {
+//        return this.scores;
+//    }
+//
+//    public void setScores(List<Score> scores) {
+//        this.scores = scores;
+//    }
 
     public List<Subject> getSubjects() {
         return this.subjects;

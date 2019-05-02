@@ -8,12 +8,13 @@ import javax.persistence.*;
 @Table(name = "score")
 public class Score {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
     @JsonBackReference
     @JoinColumn(name = "subject_id")
     private Subject subject;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = true)
     @JsonBackReference
     @JoinColumn(name = "student_id")
     private Student student;
