@@ -33,15 +33,25 @@ public class ScoreController {
 
     @PostMapping("scores/update/add")
     Score addStudentScore(@RequestParam("id") Integer id,
-                      @RequestParam("studentId") Integer studentId,
-                      @RequestParam("subjectId") Integer subjectId,
-                      @RequestParam("score") Double scoreNum) {
+                          @RequestParam("studentId") Integer studentId,
+                          @RequestParam("subjectId") Integer subjectId,
+                          @RequestParam("score") Double scoreNum) {
         Student student = studentRepository.findById(studentId).get();
         Subject subject = subjectRepository.findById(subjectId).get();
         Score score = new Score();
         score.setId(id);
         score.setStudent(student);
         score.setSubject(subject);
+        score.setScore(scoreNum);
+        return scoreRepository.save(score);
+    }
+
+    @PostMapping("scores/update/alter")
+    Score alterScoreByStudentANdSubject(
+            @RequestParam("studentId") Integer studentId,
+            @RequestParam("subjectId") Integer subjectId,
+            @RequestParam("score") Double scoreNum) {
+        Score score = scoreRepository.findByStudent_IdAndSubject_Id(studentId, subjectId).get();
         score.setScore(scoreNum);
         return scoreRepository.save(score);
     }
