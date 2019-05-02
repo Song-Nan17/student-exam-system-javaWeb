@@ -22,11 +22,11 @@ public class Subject {
     @JsonBackReference
     private Teacher teacher;
 
-//    @ManyToMany
-//    @JoinTable(name = "student_subject", joinColumns = @JoinColumn(name = "subject_id"),
-//            inverseJoinColumns = @JoinColumn(name = "student_id"))
-//    @JsonManagedReference
-//    private List<Student> students;
+    @ManyToMany
+    @JoinTable(name = "student_subject", joinColumns = @JoinColumn(name = "subject_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+    @JsonBackReference
+    private List<Student> students;
 
 
     public Integer getId() {
@@ -53,15 +53,15 @@ public class Subject {
 //        this.scores = scores;
 //    }
 
-//    public List<Student> getStudents() {
-//        return this.students;
-//    }
-//
-//    public void setStudents(List<Student> students) {
-//        this.students = students;
-//    }
+    public List<Student> getStudents() {
+        return this.students;
+    }
 
-//    public Teacher getTeacher() {
-//        return this.teacher;
-//    }
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
 }
