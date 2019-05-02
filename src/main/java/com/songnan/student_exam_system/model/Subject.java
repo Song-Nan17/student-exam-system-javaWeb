@@ -14,7 +14,6 @@ public class Subject {
 
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
-    @JsonBackReference
     private Teacher teacher;
 
     @ManyToMany
@@ -46,6 +45,10 @@ public class Subject {
 
     public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public Teacher getTeacher() {

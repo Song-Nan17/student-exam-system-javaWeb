@@ -31,8 +31,8 @@ public class ScoreController {
         return scoreRepository.findByStudent_Id(studentId);
     }
 
-    @PostMapping("scores/update")
-    Score updateScore(@RequestParam("id") Integer id,
+    @PostMapping("scores/update/add")
+    Score addStudentScore(@RequestParam("id") Integer id,
                       @RequestParam("studentId") Integer studentId,
                       @RequestParam("subjectId") Integer subjectId,
                       @RequestParam("score") Double scoreNum) {
