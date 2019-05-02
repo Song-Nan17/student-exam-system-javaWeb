@@ -1,7 +1,6 @@
 package com.songnan.student_exam_system.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,10 +11,6 @@ public class Subject {
     @Id
     private Integer id;
     private String name;
-
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
-//    @JsonManagedReference
-//    private List<Score> scores;
 
     @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
@@ -44,14 +39,6 @@ public class Subject {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public List<Score> getScores() {
-//        return this.scores;
-//    }
-//
-//    public void setScores(List<Score> scores) {
-//        this.scores = scores;
-//    }
 
     public List<Student> getStudents() {
         return this.students;

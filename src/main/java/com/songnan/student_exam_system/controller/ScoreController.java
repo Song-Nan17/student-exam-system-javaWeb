@@ -26,7 +26,8 @@ public class ScoreController {
     }
 
     @GetMapping("/students/{studentId}/scores")
-    List<Score> getScoresByStudentId(@PathVariable("studentId") Integer studentId) {
+    List<Score> getScoresByStudentId(
+            @PathVariable("studentId") Integer studentId) {
         return scoreRepository.findByStudent_Id(studentId);
     }
 
@@ -34,7 +35,7 @@ public class ScoreController {
     Score updateScore(@RequestParam("id") Integer id,
                       @RequestParam("studentId") Integer studentId,
                       @RequestParam("subjectId") Integer subjectId,
-                      @RequestParam("score") Double scoreNum){
+                      @RequestParam("score") Double scoreNum) {
         Student student = studentRepository.findById(studentId).get();
         Subject subject = subjectRepository.findById(subjectId).get();
         Score score = new Score();

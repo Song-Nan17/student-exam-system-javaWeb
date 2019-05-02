@@ -20,12 +20,8 @@ public class SubjectController {
     }
 
     @GetMapping("/teachers/{teacherId}/subject")
-    Optional<Subject> getSubjectByTeacherId(@PathVariable("teacherId") Integer teacherId) {
+    Optional<Subject> getSubjectByTeacherId(
+            @PathVariable("teacherId") Integer teacherId) {
         return subjectRepository.findByTeacher_Id(teacherId);
     }
-//
-//    @GetMapping("/teachers/{teacherId}/subject")
-//    Subject getSubjectByTeacherId(@PathVariable("teacherId") Integer teacherId) {
-//        return subjectRepository.findByTeacher_Id(teacherId);
-//    }
 }

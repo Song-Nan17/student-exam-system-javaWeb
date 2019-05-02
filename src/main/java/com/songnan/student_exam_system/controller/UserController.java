@@ -7,6 +7,7 @@ import com.songnan.student_exam_system.model.Request;
 import com.songnan.student_exam_system.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Iterator;
@@ -15,13 +16,13 @@ import java.util.Iterator;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private RequestRepository requestRepository;
 
-
     @PostMapping("/login")
-    Iterable<Request> superAdminLogin(String name, String password) {
+    Iterable<Request> superAdminLogin(
+            @RequestParam("name") String name,
+            @RequestParam("password") String password) {
         Iterable<Request> requests = null;
         User user = getUserByNameAndPassword(name, password);
         if (UserService.isSuperAdmin(user)) {
@@ -35,6 +36,10 @@ public class UserController {
     }
 
     Iterable<Request> getAuthorityRequestsOfSuperAdmin() {
+        return getRequestsExceptLogin();
+    }
+
+    Iterable<Request> getRequestsExceptLogin() {
         Iterable<Request> requests = requestRepository.findAll();
         Iterator<Request> iterator = requests.iterator();
         while (iterator.hasNext()) {
