@@ -32,10 +32,13 @@ public class StudentController {
 //        return studentRepository.findById(id).get().getScores();
 //    }
 
-//    @RequestMapping(value = "students/update",method = RequestMethod.POST,headers = "Content-Type:application/json")
-//    Student updateStudent(Student student) {
-//        Student oldStudent = studentRepository.findById(student.getId()).get();
-//        student.setScores(oldStudent.getScores());
-//        return studentRepository.save(student);
-//    }
+    @PostMapping("students/update")
+    Student updateStudent(@RequestParam("id") Integer id,@RequestParam("name") String name,@RequestParam("age") Integer age,@RequestParam("sex") String sex) {
+        Student student = new Student();
+        student.setId(id);
+        student.setName(name);
+        student.setAge(age);
+        student.setSex(sex);
+        return studentRepository.save(student);
+    }
 }
