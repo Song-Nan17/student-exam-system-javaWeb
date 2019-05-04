@@ -40,6 +40,19 @@ public class SubjectController {
         return subjectRepository.save(subject);
     }
 
+    @PostMapping("subjects/{id}/alter")
+    Subject alterSpecifiedSubject(
+            @PathVariable("id") Integer id,
+            @RequestParam("name") String name,
+            @RequestParam("teacherId") Integer teacherId) {
+        Subject subject = subjectRepository.findById(id).get();
+        subject.setId(id);
+        subject.setName(name);
+        Teacher teacher = teacherRepository.findById(teacherId).get();
+        subject.setTeacher(teacher);
+        return subjectRepository.save(subject);
+    }
+
     @DeleteMapping("subjects/{id}/delete")
     void deleteSubjectById(@PathVariable("id") Integer id) {
         subjectRepository.deleteById(id);
