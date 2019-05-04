@@ -9,8 +9,6 @@ import com.songnan.student_exam_system.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 public class ScoreController {
     @Autowired
@@ -26,9 +24,15 @@ public class ScoreController {
     }
 
     @GetMapping("/students/{studentId}/scores")
-    List<Score> getScoresByStudentId(
+    Iterable<Score> getScoresByStudentId(
             @PathVariable("studentId") Integer studentId) {
         return scoreRepository.findByStudentId(studentId);
+    }
+
+    @GetMapping("subjects/{subjectId}/scores")
+    Iterable<Score> getScoresBySubjectId(
+            @PathVariable("subjectId") Integer subjectId) {
+        return scoreRepository.findBySubjectId(subjectId);
     }
 
     @PostMapping("scores/update/add")

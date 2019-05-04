@@ -7,7 +7,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ScoreRepository extends CrudRepository<Score, Integer> {
-    List<Score> findByStudentId(Integer id);
+    Iterable<Score> findByStudentId(Integer id);
+
+    Iterable<Score> findBySubjectId(Integer id);
 
     Optional<Score> findByStudentIdAndSubjectId(Integer studentId, Integer subjectId);
 }

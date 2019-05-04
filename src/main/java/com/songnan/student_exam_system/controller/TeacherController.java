@@ -35,8 +35,8 @@ public class TeacherController {
         Teacher teacher = new Teacher();
         teacher.setId(id);
         teacher.setName(name);
-        teacher.setAge(age);
         teacher.setSex(sex);
+        teacher.setAge(age);
         return teacherRepository.save(teacher);
     }
 

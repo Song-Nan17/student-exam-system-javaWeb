@@ -13,7 +13,7 @@ public class Teacher {
     private Integer age;
     private String sex;
 
-    @OneToOne(mappedBy = "teacher",cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @OneToOne(mappedBy = "teacher",cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JsonBackReference
     private Subject subject;
 
