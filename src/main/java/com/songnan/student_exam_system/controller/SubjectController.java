@@ -39,4 +39,9 @@ public class SubjectController {
         subject.setTeacher(teacher);
         return subjectRepository.save(subject);
     }
+
+    @DeleteMapping("subjects/{id}/delete")
+    void deleteSubjectById(@PathVariable("id") Integer id) {
+        subjectRepository.deleteById(id);
+    }
 }

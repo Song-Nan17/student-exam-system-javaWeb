@@ -22,6 +22,10 @@ public class Subject {
     @JsonBackReference
     private List<Student> students;
 
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Score> scores;
+
 
     public Integer getId() {
         return this.id;
@@ -53,5 +57,13 @@ public class Subject {
 
     public Teacher getTeacher() {
         return this.teacher;
+    }
+
+    public List<Score> getScores() {
+        return this.scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
     }
 }

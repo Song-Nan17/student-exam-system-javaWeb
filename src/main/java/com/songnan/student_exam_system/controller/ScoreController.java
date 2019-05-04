@@ -28,7 +28,7 @@ public class ScoreController {
     @GetMapping("/students/{studentId}/scores")
     List<Score> getScoresByStudentId(
             @PathVariable("studentId") Integer studentId) {
-        return scoreRepository.findByStudent_Id(studentId);
+        return scoreRepository.findByStudentId(studentId);
     }
 
     @PostMapping("scores/update/add")
@@ -51,7 +51,7 @@ public class ScoreController {
             @RequestParam("studentId") Integer studentId,
             @RequestParam("subjectId") Integer subjectId,
             @RequestParam("score") Double scoreNum) {
-        Score score = scoreRepository.findByStudent_IdAndSubject_Id(studentId, subjectId).get();
+        Score score = scoreRepository.findByStudentIdAndSubjectId(studentId, subjectId).get();
         score.setScore(scoreNum);
         return scoreRepository.save(score);
     }

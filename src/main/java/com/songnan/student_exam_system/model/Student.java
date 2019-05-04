@@ -1,6 +1,9 @@
 package com.songnan.student_exam_system.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -13,14 +16,15 @@ public class Student {
     private Integer age;
     private String sex;
 
-    public Student() {
-    }
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonBackReference
+    private List<Score> scores;
 
-    public Student(Integer id, String name, Integer age, String sex) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
+    @ManyToMany(mappedBy = "students")
+    @JsonBackReference
+    private List<Subject> subjects;
+
+    public Student() {
     }
 
     public Integer getId() {
@@ -53,5 +57,21 @@ public class Student {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public List<Score> getScores() {
+        return this.scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
+
+        public List<Subject> getSubjects() {
+        return this.subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

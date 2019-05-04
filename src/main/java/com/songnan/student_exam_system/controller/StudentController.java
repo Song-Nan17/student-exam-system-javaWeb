@@ -1,5 +1,6 @@
 package com.songnan.student_exam_system.controller;
 
+import com.songnan.student_exam_system.dao.ScoreRepository;
 import com.songnan.student_exam_system.dao.StudentRepository;
 import com.songnan.student_exam_system.dao.SubjectRepository;
 import com.songnan.student_exam_system.model.Student;
@@ -16,6 +17,8 @@ public class StudentController {
     private StudentRepository studentRepository;
     @Autowired
     private SubjectRepository subjectRepository;
+    @Autowired
+    private ScoreRepository scoreRepository;
 
     @GetMapping("/students")
     Iterable<Student> getAllStudents() {
@@ -46,5 +49,10 @@ public class StudentController {
         student.setAge(age);
         student.setSex(sex);
         return studentRepository.save(student);
+    }
+
+    @DeleteMapping("students/{id}/delete")
+    void deleteStudentById(@PathVariable("id") Integer id){
+        studentRepository.deleteById(id);
     }
 }
