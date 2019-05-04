@@ -30,9 +30,9 @@ public class TeacherController {
 
     @PostMapping("teachers/add")
     Teacher addTeacher(@RequestParam("id") Integer id,
-                          @RequestParam("name") String name,
-                          @RequestParam("age") Integer age,
-                          @RequestParam("sex") String sex) {
+                       @RequestParam("name") String name,
+                       @RequestParam("age") Integer age,
+                       @RequestParam("sex") String sex) {
         Teacher teacher = new Teacher();
         teacher.setId(id);
         teacher.setName(name);
@@ -42,10 +42,11 @@ public class TeacherController {
     }
 
     @PostMapping("teachers/{id}/alter")
-    Teacher alterSpecifiedTeacher(@PathVariable("id") Integer id,
-                       @RequestParam("name") String name,
-                       @RequestParam("age") Integer age,
-                       @RequestParam("sex") String sex) {
+    Teacher alterSpecifiedTeacher(
+            @PathVariable("id") Integer id,
+            @RequestParam("name") String name,
+            @RequestParam("age") Integer age,
+            @RequestParam("sex") String sex) {
         Teacher teacher = teacherRepository.findById(id).get();
         teacher.setName(name);
         teacher.setAge(age);

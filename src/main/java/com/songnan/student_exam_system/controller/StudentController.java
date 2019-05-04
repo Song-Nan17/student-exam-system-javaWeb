@@ -35,11 +35,11 @@ public class StudentController {
         return subject.getStudents();
     }
 
-    @PostMapping("students/update")
-    Student updateStudent(@RequestParam("id") Integer id,
-                          @RequestParam("name") String name,
-                          @RequestParam("age") Integer age,
-                          @RequestParam("sex") String sex) {
+    @PostMapping("students/add")
+    Student addStudent(@RequestParam("id") Integer id,
+                       @RequestParam("name") String name,
+                       @RequestParam("age") Integer age,
+                       @RequestParam("sex") String sex) {
         Student student = new Student();
         student.setId(id);
         student.setName(name);
@@ -49,7 +49,7 @@ public class StudentController {
     }
 
     @DeleteMapping("students/{id}/delete")
-    void deleteStudentById(@PathVariable("id") Integer id){
+    void deleteStudentById(@PathVariable("id") Integer id) {
         studentRepository.deleteById(id);
     }
 }
