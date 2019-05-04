@@ -27,8 +27,8 @@ public class SubjectController {
         return subjectRepository.findByTeacherId(teacherId);
     }
 
-    @PostMapping("subjects/update")
-    Subject updateSubject(
+    @PostMapping("subjects/add")
+    Subject addSubject(
             @RequestParam("id") Integer id,
             @RequestParam("name") String name,
             @RequestParam("teacherId") Integer teacherId) {
