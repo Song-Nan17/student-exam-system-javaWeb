@@ -1,6 +1,5 @@
 package com.songnan.student_exam_system.controller;
 
-import com.songnan.student_exam_system.dao.ScoreRepository;
 import com.songnan.student_exam_system.dao.StudentRepository;
 import com.songnan.student_exam_system.dao.SubjectRepository;
 import com.songnan.student_exam_system.model.Student;
@@ -17,8 +16,6 @@ public class StudentController {
     private StudentRepository studentRepository;
     @Autowired
     private SubjectRepository subjectRepository;
-    @Autowired
-    private ScoreRepository scoreRepository;
 
     @GetMapping("/students")
     Iterable<Student> getAllStudents() {
@@ -34,7 +31,7 @@ public class StudentController {
     @GetMapping("teachers/{teacherId}/students")
     List<Student> getStudentByTeacherId(
             @PathVariable("teacherId") Integer teacherId) {
-        Subject subject = subjectRepository.findByTeacher_Id(teacherId).get();
+        Subject subject = subjectRepository.findByTeacherId(teacherId).get();
         return subject.getStudents();
     }
 

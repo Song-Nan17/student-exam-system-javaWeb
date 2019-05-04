@@ -1,5 +1,7 @@
 package com.songnan.student_exam_system.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,10 @@ public class Teacher {
     private String name;
     private Integer age;
     private String sex;
+
+    @OneToOne(mappedBy = "teacher",cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @JsonBackReference
+    private Subject subject;
 
     public Integer getId() {
         return this.id;
@@ -41,5 +47,13 @@ public class Teacher {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public Subject getSubject() {
+        return this.subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }

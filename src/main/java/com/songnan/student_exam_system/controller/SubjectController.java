@@ -24,7 +24,7 @@ public class SubjectController {
     @GetMapping("/teachers/{teacherId}/subject")
     Optional<Subject> getSubjectByTeacherId(
             @PathVariable("teacherId") Integer teacherId) {
-        return subjectRepository.findByTeacher_Id(teacherId);
+        return subjectRepository.findByTeacherId(teacherId);
     }
 
     @PostMapping("subjects/update")
