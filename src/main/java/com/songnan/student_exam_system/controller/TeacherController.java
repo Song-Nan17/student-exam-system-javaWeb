@@ -41,6 +41,18 @@ public class TeacherController {
         return teacherRepository.save(teacher);
     }
 
+    @PostMapping("teachers/{id}/alter")
+    Teacher alterSpecifiedTeacher(@PathVariable("id") Integer id,
+                       @RequestParam("name") String name,
+                       @RequestParam("age") Integer age,
+                       @RequestParam("sex") String sex) {
+        Teacher teacher = teacherRepository.findById(id).get();
+        teacher.setName(name);
+        teacher.setAge(age);
+        teacher.setSex(sex);
+        return teacherRepository.save(teacher);
+    }
+
     @DeleteMapping("teachers/{id}/delete")
     void deleteTeacherById(@PathVariable("id") Integer id) {
         deleteSubjectOfTeacher(id);
