@@ -2,13 +2,11 @@ package com.songnan.student_exam_system.controller;
 
 import com.songnan.student_exam_system.dao.SubjectRepository;
 import com.songnan.student_exam_system.dao.TeacherRepository;
+import com.songnan.student_exam_system.model.Student;
 import com.songnan.student_exam_system.model.Subject;
 import com.songnan.student_exam_system.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -28,6 +26,19 @@ public class TeacherController {
     Optional<Teacher> getTeacherById(
             @PathVariable("id") Integer id) {
         return teacherRepository.findById(id);
+    }
+
+    @PostMapping("teachers/add")
+    Teacher addTeacher(@RequestParam("id") Integer id,
+                          @RequestParam("name") String name,
+                          @RequestParam("age") Integer age,
+                          @RequestParam("sex") String sex) {
+        Teacher teacher = new Teacher();
+        teacher.setId(id);
+        teacher.setName(name);
+        teacher.setAge(age);
+        teacher.setSex(sex);
+        return teacherRepository.save(teacher);
     }
 
     @DeleteMapping("teachers/{id}/delete")
