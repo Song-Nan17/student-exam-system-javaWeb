@@ -2,7 +2,6 @@ package com.songnan.student_exam_system.controller;
 
 import com.songnan.student_exam_system.dao.SubjectRepository;
 import com.songnan.student_exam_system.dao.TeacherRepository;
-import com.songnan.student_exam_system.model.Student;
 import com.songnan.student_exam_system.model.Subject;
 import com.songnan.student_exam_system.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
