@@ -48,6 +48,19 @@ public class StudentController {
         return studentRepository.save(student);
     }
 
+    @PostMapping("students/{id}/alter")
+    Student alterSpecifiedStudent(
+            @PathVariable("id") Integer id,
+            @RequestParam("name") String name,
+            @RequestParam("age") Integer age,
+            @RequestParam("sex") String sex) {
+        Student student = studentRepository.findById(id).get();
+        student.setName(name);
+        student.setAge(age);
+        student.setSex(sex);
+        return studentRepository.save(student);
+    }
+
     @DeleteMapping("students/{id}/delete")
     void deleteStudentById(@PathVariable("id") Integer id) {
         studentRepository.deleteById(id);
