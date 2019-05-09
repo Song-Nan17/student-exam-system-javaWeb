@@ -27,7 +27,7 @@ public class SubjectController {
         return subjectRepository.findByTeacherId(teacherId);
     }
 
-    @PostMapping("subjects/add")
+    @PostMapping("subjects")
     Subject addSubject(
             @RequestParam("id") Integer id,
             @RequestParam("name") String name,
@@ -40,7 +40,7 @@ public class SubjectController {
         return subjectRepository.save(subject);
     }
 
-    @PostMapping("subjects/{id}/alter")
+    @PutMapping("subjects/{id}")
     Subject alterSpecifiedSubject(
             @PathVariable("id") Integer id,
             @RequestParam("name") String name,
@@ -53,7 +53,7 @@ public class SubjectController {
         return subjectRepository.save(subject);
     }
 
-    @DeleteMapping("subjects/{id}/delete")
+    @DeleteMapping("subjects/{id}")
     void deleteSubjectById(@PathVariable("id") Integer id) {
         subjectRepository.deleteById(id);
     }

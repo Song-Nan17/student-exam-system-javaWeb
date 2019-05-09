@@ -29,30 +29,29 @@ public class ScoreController {
         return scoreRepository.findByStudentId(studentId);
     }
 
-    @GetMapping("subjects/{subjectId}/scores")
+    @GetMapping("/subjects/{subjectId}/scores")
     Iterable<Score> getScoresBySubjectId(
             @PathVariable("subjectId") Integer subjectId) {
         return scoreRepository.findBySubjectId(subjectId);
     }
 
-    @PostMapping("scores/update/add")
-    Score addStudentScore(@RequestParam("id") Integer id,
-                          @RequestParam("studentId") Integer studentId,
-                          @RequestParam("subjectId") Integer subjectId,
-                          @RequestParam("score") Double scoreNum) {
+    @PostMapping("/students/{studentId}/scores")
+    Score addStudentScore(
+            @PathVariable("studentId") Integer studentId,
+            @RequestParam("subjectId") Integer subjectId,
+            @RequestParam("score") Double scoreNum) {
         Student student = studentRepository.findById(studentId).get();
         Subject subject = subjectRepository.findById(subjectId).get();
         Score score = new Score();
-        score.setId(id);
         score.setStudent(student);
         score.setSubject(subject);
         score.setScore(scoreNum);
         return scoreRepository.save(score);
     }
 
-    @PostMapping("scores/update/alter")
+    @PutMapping("/students/{studentId}/scores")
     Score alterScoreByStudentANdSubject(
-            @RequestParam("studentId") Integer studentId,
+            @PathVariable("studentId") Integer studentId,
             @RequestParam("subjectId") Integer subjectId,
             @RequestParam("score") Double scoreNum) {
         Score score = scoreRepository.findByStudentIdAndSubjectId(studentId, subjectId).get();

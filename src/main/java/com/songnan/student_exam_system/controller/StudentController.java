@@ -28,14 +28,14 @@ public class StudentController {
         return studentRepository.findById(id);
     }
 
-    @GetMapping("teachers/{teacherId}/students")
+    @GetMapping("/teachers/{teacherId}/students")
     List<Student> getStudentByTeacherId(
             @PathVariable("teacherId") Integer teacherId) {
         Subject subject = subjectRepository.findByTeacherId(teacherId).get();
         return subject.getStudents();
     }
 
-    @PostMapping("students/add")
+    @PostMapping("/students")
     Student addStudent(@RequestParam("id") Integer id,
                        @RequestParam("name") String name,
                        @RequestParam("age") Integer age,
@@ -48,7 +48,7 @@ public class StudentController {
         return studentRepository.save(student);
     }
 
-    @PostMapping("students/{id}/alter")
+    @PutMapping("/students/{id}")
     Student alterSpecifiedStudent(
             @PathVariable("id") Integer id,
             @RequestParam("name") String name,
@@ -61,7 +61,7 @@ public class StudentController {
         return studentRepository.save(student);
     }
 
-    @DeleteMapping("students/{id}/delete")
+    @DeleteMapping("students/{id}")
     void deleteStudentById(@PathVariable("id") Integer id) {
         studentRepository.deleteById(id);
     }
